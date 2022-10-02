@@ -12,6 +12,7 @@ prettier.setup {
     "json",
     "scss",
     "less",
+    "markdown",
     "vue"
   }
 }

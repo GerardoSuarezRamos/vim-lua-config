@@ -6,6 +6,7 @@ vim.opt.fileencoding = 'utf-8'
 
 vim.wo.number = true
 
+vim.opt.clipboard = 'unnamedplus'
 vim.opt.title = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
@@ -28,8 +29,6 @@ vim.opt.wrap = false -- No Wrap lines
 vim.opt.backspace = { 'start', 'eol', 'indent' }
 vim.opt.path:append { '**' } -- Finding files - Search down into subfolders
 vim.opt.wildignore:append { '*/node_modules/*' }
-vim.opt.clipboard:append { 'unnamedplus' }
-
 
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])

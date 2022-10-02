@@ -23,15 +23,6 @@ local on_attach = function(client, bufnr)
   --buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   --buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-
-  -- formatting
-  if client.server_capabilities.documentFormattingProvider then
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = vim.api.nvim_create_augroup("Format", { clear = true }),
-      buffer = bufnr,
-      callback = function() vim.lsp.buf.formatting_seq_sync() end
-    })
-  end
 end
 
 protocol.CompletionItemKind = {
@@ -74,8 +65,7 @@ nvim_lsp.flow.setup {
 
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
-  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx",
-    "javascriptvue" },
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server", "--stdio" },
   capabilities = capabilities
 }
@@ -129,43 +119,3 @@ vim.diagnostic.config({
     source = "always", -- Or "if_many"
   },
 })
-
--- vue vls config for vue templates
-require 'lspconfig'.vuels.setup {
-  config = {
-    css = {},
-    emmet = {},
-    html = {
-      suggest = {}
-    },
-    javascript = {
-      format = {}
-    },
-    stylusSupremacy = {},
-    typescript = {
-      format = {}
-    },
-    vetur = {
-      completion = {
-        autoImport = false,
-        tagCasing = "kebab",
-        useScaffoldSnippets = false
-      },
-      format = {
-        defaultFormatter = {
-          js = "eslint",
-          ts = "eslint"
-        },
-        defaultFormatterOptions = {},
-        scriptInitialIndent = false,
-        styleInitialIndent = false
-      },
-      useWorkspaceDependencies = false,
-      validation = {
-        script = true,
-        style = true,
-        template = true
-      },
-    }
-  }
-}
