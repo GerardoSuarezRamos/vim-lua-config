@@ -65,9 +65,9 @@ nvim_lsp.flow.setup {
 
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx"},
   cmd = { "typescript-language-server", "--stdio" },
-  capabilities = capabilities
+  capabilities = capabilities,
 }
 
 nvim_lsp.sourcekit.setup {
@@ -93,6 +93,34 @@ nvim_lsp.sumneko_lua.setup {
 }
 
 nvim_lsp.tailwindcss.setup {}
+
+nvim_lsp.vuels.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+  vetur = {
+      completion = {
+        autoImport = true,
+        tagCasing = "kebab",
+        useScaffoldSnippets = true
+      },
+      format = {
+        defaultFormatter = {
+          js = "prettier",
+          ts = "prettier"
+        },
+        defaultFormatterOptions = {},
+        scriptInitialIndent = false,
+        styleInitialIndent = false
+      },
+      useWorkspaceDependencies = false,
+      validation = {
+        script = true,
+        style = true,
+        template = true
+      }
+    }
+}
+
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
