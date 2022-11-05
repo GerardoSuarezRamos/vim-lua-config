@@ -25,8 +25,8 @@ packer.startup(function(use)
 	use("williamboman/mason-lspconfig.nvim")
 	use("folke/tokyonight.nvim")
 	use("glepnir/lspsaga.nvim") -- LSP UIs
-	use({ "L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*" })
-	use({
+	use "L3MON4D3/LuaSnip"
+  use({
 		"nvim-treesitter/nvim-treesitter",
 		run = function()
 			require("nvim-treesitter.install").update({ with_sync = true })
@@ -58,5 +58,4 @@ packer.startup(function(use)
 		},
 	})
 	use({ "akinsho/toggleterm.nvim", tag = "*" })
-  use "rafamadriz/friendly-snippets"
 end)

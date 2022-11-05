@@ -1,4 +1,3 @@
-
 vim.g.tokyonight_style = "night"
 vim.g.tokyonight_italic_functions = true
 vim.g.tokyonight_transparent = true
@@ -21,6 +20,5 @@ vim.g.tokyonight_colors = {
   magenta = "#d33682",
   purple = "#6c71c4",
 }
-
 
 vim.cmd[[colorscheme tokyonight]]

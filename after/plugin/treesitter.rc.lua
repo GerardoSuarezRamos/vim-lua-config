@@ -20,7 +20,12 @@ ts.setup {
     "html",
     "lua",
     "vue",
-    "yaml"
+    "yaml",
+    "go",
+    "lua",
+    "elixir",
+    "heex",
+    "eex"
   },
   autotag = {
     enable = true,

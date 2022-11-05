@@ -54,7 +54,7 @@ protocol.CompletionItemKind = {
 }
 
 -- Set up completion using nvim_cmp with LSP source
-local capabilities = require('cmp_nvim_lsp').update_capabilities(
+local capabilities = require('cmp_nvim_lsp').default_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
@@ -94,31 +94,21 @@ nvim_lsp.sumneko_lua.setup {
 
 nvim_lsp.tailwindcss.setup {}
 
-nvim_lsp.vuels.setup{
+nvim_lsp.golangci_lint_ls.setup {
   on_attach = on_attach,
-  capabilities = capabilities,
-  vetur = {
-      completion = {
-        autoImport = true,
-        tagCasing = "kebab",
-        useScaffoldSnippets = true
-      },
-      format = {
-        defaultFormatter = {
-          js = "prettier",
-          ts = "prettier"
-        },
-        defaultFormatterOptions = {},
-        scriptInitialIndent = false,
-        styleInitialIndent = false
-      },
-      useWorkspaceDependencies = false,
-      validation = {
-        script = true,
-        style = true,
-        template = true
-      }
-    }
+  capabilities = capabilities
+}
+
+nvim_lsp.intelephense.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
+
+nvim_lsp.elixirls.setup{
+  cmd = { "elixir-ls" },
+  on_attach = on_attach,
+  capabilities = capabilities
 }
 
 
